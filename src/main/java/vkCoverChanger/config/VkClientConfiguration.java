@@ -23,12 +23,8 @@ public class VkClientConfiguration {
     VkClientProperties vkClientProperties;
 
     @Bean
-    VkClientInstance vkClientInstanceImpl() {
+    VkClientInstance vkClientInstance() {
         return VkClient.createNewClient(vkClientProperties);
     }
 
-/*    @Bean
-    VkClientInstance vkClientInstance() {
-        return vkClientInstanceImpl();
-    }*/
 }

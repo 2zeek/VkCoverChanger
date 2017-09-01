@@ -23,8 +23,4 @@ public class WeatherClientConfiguration {
         return WeatherClient.createNewClient(weatherClientProperties);
     }
 
-    @Bean
-    WeatherClientInstance weatherClientInstance() {
-        return weatherClientInstanceImpl();
-    }
 }
