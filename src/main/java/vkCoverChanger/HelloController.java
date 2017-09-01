@@ -1,6 +1,10 @@
 package vkCoverChanger;
 
+import com.vk.api.sdk.exceptions.ApiException;
+import com.vk.api.sdk.exceptions.ClientException;
+import com.vk.api.sdk.objects.wall.responses.GetResponse;
 import vkCoverChanger.config.WeatherClientConfiguration;
+import vkCoverChanger.vk.VkClientInstance;
 import vkCoverChanger.weather.WeatherClientInstance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Import;
@@ -18,6 +22,9 @@ public class HelloController {
     @Autowired
     protected WeatherClientInstance weatherClientInstance;
 
+    @Autowired
+    protected VkClientInstance vkClientInstance;
+
     @RequestMapping("/")
     @ResponseBody
     String home() {
@@ -34,5 +41,11 @@ public class HelloController {
     @ResponseBody
     String test() {
         return weatherClientInstance.getWeatherResponse().getMain().getTemp().toString();
+    }
+
+    @RequestMapping("/aass")
+    @ResponseBody
+    GetResponse aass() throws ClientException, ApiException {
+        return vkClientInstance.getWall();
     }
 }

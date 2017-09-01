@@ -6,9 +6,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Import;
+import vkCoverChanger.config.properties.VkClientProperties;
 
 @SpringBootApplication
-@Import(WeatherClientConfiguration.class)
+@Import({
+        WeatherClientConfiguration.class,
+        VkClientProperties.class
+})
 public class VkCoverChanger {
 
     static Logger log = LoggerFactory.getLogger(VkCoverChanger.class);

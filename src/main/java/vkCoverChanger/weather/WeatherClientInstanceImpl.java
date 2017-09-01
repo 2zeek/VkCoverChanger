@@ -23,7 +23,6 @@ public class WeatherClientInstanceImpl implements WeatherClientInstance {
         this.objectMapper = new ObjectMapper();
     }
 
-    @Override
     public WeatherResponse getWeatherResponse() {
         WeatherResponse weatherResponse = restTemplate.getForObject(weatherClientProperties.getUrl() +
                 weatherClientProperties.getParams(), WeatherResponse.class);

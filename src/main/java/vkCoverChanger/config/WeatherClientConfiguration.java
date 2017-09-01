@@ -20,7 +20,6 @@ public class WeatherClientConfiguration {
 
     @Bean
     WeatherClientInstance weatherClientInstanceImpl() {
-        System.out.println(weatherClientProperties);
         return WeatherClient.createNewClient(weatherClientProperties);
     }
 
