@@ -43,7 +43,6 @@ public class VkCoverChanger {
 
     @Scheduled(fixedDelay = 1800000) // 30 minutes delay
     public void generateAndPost() throws ClientException, ApiException {
-        log.info("ping");
-        //vkClientInstance.setGroupCover(coverGeneratorController.generatePic());
+        vkClientInstance.setGroupCover(coverGeneratorController.generatePic());
     }
 }
