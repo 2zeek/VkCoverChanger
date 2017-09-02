@@ -47,8 +47,7 @@ public class CoverGeneratorController {
         calendar.setTime(new Date());
         Integer currentHour = calendar.get(Calendar.HOUR_OF_DAY);
 
-        //String weather = weatherData.get("weather").asText().toLowerCase();
-        String weather = "clear";
+        String weather = weatherClientInstance.getWeatherResponse().getWeather().get(0).getMain().toLowerCase();
         String dayTime = currentHour > 6 && currentHour < 20 ? "day" : "night";
         String weatherPicName = weather + "_" + dayTime;
 
@@ -56,7 +55,7 @@ public class CoverGeneratorController {
                 ? "+" + weatherData.getMain().getTemp().toString().split("\\.")[0] + "°"
                 : "1" + weatherData.getMain().getTemp().toString().split("\\.")[0] + "°";
 
-        log.info("Current temp: " + tempText);
+        log.info("Current weather: " + tempText + ", " + weather);
 
         BufferedImage text = convertTextToGraphic(tempText, new Font("Arial", Font.PLAIN, 25));
         BufferedImage icon = null;
