@@ -53,8 +53,10 @@ public class CoverGeneratorController {
         String weatherPicName = weather + "_" + dayTime;
 
         String tempText =weatherData.getMain().getTemp() > 0
-                ? "+" + weatherData.getMain().getTemp().toString() + "°"
-                : "1" + weatherData.getMain().getTemp().toString() + "°";
+                ? "+" + weatherData.getMain().getTemp().toString().split("\\.")[0] + "°"
+                : "1" + weatherData.getMain().getTemp().toString().split("\\.")[0] + "°";
+
+        log.info("Current temp: " + tempText);
 
         BufferedImage text = convertTextToGraphic(tempText, new Font("Arial", Font.PLAIN, 25));
         BufferedImage icon = null;
