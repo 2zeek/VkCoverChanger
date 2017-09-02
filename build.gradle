@@ -1,4 +1,4 @@
-group 'VkCoverChanger'
+group 'vk-cover-changer'
 version '1.0'
 
 buildscript {
@@ -45,7 +45,7 @@ jar {
 
 distributions {
     main {
-        baseName = 'VkCoverChanger'
+        baseName = 'vk-cover-changer'
         contents {
             from { './' } {
                 include 'icons/**/*.*'
@@ -55,4 +55,8 @@ distributions {
             }
         }
     }
+}
+
+springBoot {
+    executable = true
 }
