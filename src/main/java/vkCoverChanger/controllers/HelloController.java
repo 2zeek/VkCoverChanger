@@ -1,4 +1,4 @@
-package vkCoverChanger;
+package vkCoverChanger.controllers;
 
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;

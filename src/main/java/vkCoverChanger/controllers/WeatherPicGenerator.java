@@ -1,4 +1,4 @@
-package vkCoverChanger;
+package vkCoverChanger.controllers;
 
 import org.imgscalr.Scalr;
 import org.slf4j.Logger;
@@ -38,7 +38,7 @@ public class WeatherPicGenerator {
         return new WeatherPicGenerator(picGeneratorProperties);
     }
 
-    public File generatePic() {
+    File generatePic() {
 
         picGeneratorProperties.getResult().getFolderPath().toFile().mkdirs();
         WeatherResponse weatherData = weatherClientInstance.getWeatherResponse();
