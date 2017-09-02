@@ -48,4 +48,5 @@ public class HelloController {
     GetResponse aass() throws ClientException, ApiException {
         return vkClientInstance.getWall();
     }
+
 }

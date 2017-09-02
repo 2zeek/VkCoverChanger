@@ -1,5 +1,6 @@
 package vkCoverChanger.config.properties;
 
+import com.vk.api.sdk.client.actors.Actor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.properties.ConfigurationProperties;
@@ -25,7 +26,7 @@ public class VkClientProperties {
         private String accessToken;
 
         @Nullable
-        private String actor;
+        private Actor actor;
 
         public Integer getId() {
             return id;
@@ -44,11 +45,11 @@ public class VkClientProperties {
         }
 
         @Nullable
-        public String getActor() {
+        public Actor getActor() {
             return actor;
         }
 
-        public void setActor(@Nullable String actor) {
+        public void setActor(@Nullable Actor actor) {
             this.actor = actor;
         }
 
@@ -60,7 +61,7 @@ public class VkClientProperties {
         private String accessToken;
 
         @Nullable
-        private String actor;
+        private Actor actor;
 
         public Integer getId() {
             return id;
@@ -79,11 +80,11 @@ public class VkClientProperties {
         }
 
         @Nullable
-        public String getActor() {
+        public Actor getActor() {
             return actor;
         }
 
-        public void setActor(@Nullable String actor) {
+        public void setActor(@Nullable Actor actor) {
             this.actor = actor;
         }
 
