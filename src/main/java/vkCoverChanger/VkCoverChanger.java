@@ -1,5 +1,6 @@
 package vkCoverChanger;
 
+import org.springframework.context.ApplicationContext;
 import vkCoverChanger.application.Application;
 import vkCoverChanger.config.WeatherClientConfiguration;
 import org.slf4j.Logger;
@@ -18,6 +19,6 @@ public class VkCoverChanger {
     static Logger log = LoggerFactory.getLogger(VkCoverChanger.class);
 
     public static void main(String... args) {
-        Application.start(VkCoverChanger.class, args);
+        ApplicationContext context = Application.start(VkCoverChanger.class, args);
     }
 }

@@ -24,8 +24,6 @@ import java.util.List;
 
 public class VkClientInstanceImpl implements VkClientInstance {
 
-    private final String NAMESPACE = "vk";
-
     private VkClientProperties vkClientProperties;
     private VkApiClient vkApiClient;
 
@@ -53,8 +51,7 @@ public class VkClientInstanceImpl implements VkClientInstance {
                 .execute();
     }
 
-    public PostResponse setPhotoOnTheWall() throws ClientException, ApiException {
-        File file = new File(System.getProperty("user.dir") + "\\upload-dir\\vk\\photo_for_upload.jpg");
+    public PostResponse setPhotoOnTheWall(File file) throws ClientException, ApiException {
         PhotoUpload serverResponse = vkApiClient.photos()
                 .getWallUploadServer((UserActor) vkClientProperties.getUser().getActor())
                 .execute();
@@ -73,8 +70,7 @@ public class VkClientInstanceImpl implements VkClientInstance {
                 .execute();
     }
 
-    public SaveOwnerPhotoResponse setAvatar() throws ClientException, ApiException {
-        File file = new File(System.getProperty("user.dir") + "\\upload-dir\\vk\\user\\photo_for_upload.jpg");
+    public SaveOwnerPhotoResponse setAvatar(File file) throws ClientException, ApiException {
         GetOwnerPhotoUploadServerResponse serverResponse = vkApiClient.photos().
                 getOwnerPhotoUploadServer((UserActor) vkClientProperties.getUser().getActor())
                 .execute();
@@ -95,8 +91,7 @@ public class VkClientInstanceImpl implements VkClientInstance {
                 .execute();
     }
 
-    public SaveOwnerPhotoResponse setGroupAvatar() throws ClientException, ApiException {
-        File file = new File(System.getProperty("user.dir") + "\\upload-dir\\vk\\group\\avatar_for_upload.jpg");
+    public SaveOwnerPhotoResponse setGroupAvatar(File file) throws ClientException, ApiException {
         GetOwnerPhotoUploadServerResponse serverResponse = vkApiClient.photos()
                 .getOwnerPhotoUploadServer((UserActor) vkClientProperties.getUser().getActor())
                 .ownerId(0-vkClientProperties.getGroup().getId()).execute();
@@ -110,8 +105,7 @@ public class VkClientInstanceImpl implements VkClientInstance {
                 .execute();
     }
 
-    public void setGroupCover() throws ClientException, ApiException {
-        File file = new File(System.getProperty("user.dir") + "\\upload-dir\\vk\\group\\cover_for_upload.png");
+    public void setGroupCover(File file) throws ClientException, ApiException {
         GetOwnerCoverPhotoUploadServerResponse serverResponse = vkApiClient.photos()
                 .getOwnerCoverPhotoUploadServer((GroupActor) vkClientProperties.getGroup().getActor())
                 .execute();
