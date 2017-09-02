@@ -13,7 +13,7 @@ import com.vk.api.sdk.objects.photos.PhotoUpload;
 import com.vk.api.sdk.objects.photos.responses.*;
 import com.vk.api.sdk.objects.wall.responses.GetResponse;
 import com.vk.api.sdk.objects.wall.responses.PostResponse;
-import vkCoverChanger.config.properties.VkClientProperties;
+import vkCoverChanger.vk.config.properties.VkClientProperties;
 
 import java.io.File;
 import java.util.List;

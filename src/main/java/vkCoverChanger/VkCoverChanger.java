@@ -2,9 +2,8 @@ package vkCoverChanger;
 
 import org.springframework.context.ApplicationContext;
 import vkCoverChanger.application.Application;
-import vkCoverChanger.config.PicGeneratorConfiguration;
-import vkCoverChanger.config.VkClientConfiguration;
-import vkCoverChanger.config.WeatherClientConfiguration;
+import vkCoverChanger.vk.config.VkClientConfiguration;
+import vkCoverChanger.weather.config.WeatherClientConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -18,7 +17,6 @@ import org.springframework.context.annotation.Import;
 @Import({
         WeatherClientConfiguration.class,
         VkClientConfiguration.class,
-        PicGeneratorConfiguration.class
 })
 public class VkCoverChanger {
 

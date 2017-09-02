@@ -1,4 +1,4 @@
-package vkCoverChanger.config.properties;
+package vkCoverChanger.vk.config.properties;
 
 import com.vk.api.sdk.client.actors.Actor;
 import org.slf4j.Logger;

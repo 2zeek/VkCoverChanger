@@ -1,7 +1,7 @@
-package vkCoverChanger.config;
+package vkCoverChanger.weather.config;
 
 import vkCoverChanger.weather.WeatherClientInstance;
-import vkCoverChanger.config.properties.WeatherClientProperties;
+import vkCoverChanger.weather.config.properties.WeatherClientProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

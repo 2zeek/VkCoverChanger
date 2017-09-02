@@ -3,6 +3,7 @@ package vkCoverChanger.controllers;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.wall.responses.GetResponse;
+import vkCoverChanger.coverGenerator.CoverGeneratorController;
 import vkCoverChanger.vk.VkClientInstance;
 import vkCoverChanger.weather.WeatherClientInstance;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,7 @@ import java.util.Map;
  */
 
 @RestController
-public class HelloController {
+public class MainController {
 
     @Autowired
     protected WeatherClientInstance weatherClientInstance;
@@ -27,7 +28,7 @@ public class HelloController {
     protected VkClientInstance vkClientInstance;
 
     @Autowired
-    protected WeatherPicGenerator weatherPicGenerator;
+    protected CoverGeneratorController weatherPicGenerator;
 
 
     @RequestMapping("/")

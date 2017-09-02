@@ -1,10 +1,10 @@
-package vkCoverChanger.controllers;
+package vkCoverChanger.coverGenerator;
 
 import org.imgscalr.Scalr;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import vkCoverChanger.config.properties.PicGeneratorProperties;
+import vkCoverChanger.coverGenerator.config.properties.CoverGeneratorProperties;
 import vkCoverChanger.weather.WeatherClientInstance;
 import vkCoverChanger.weather.response.WeatherResponse;
 
@@ -21,24 +21,24 @@ import java.util.GregorianCalendar;
  * Created by Nikolay V. Petrov on 30.08.2017.
  */
 
-public class WeatherPicGenerator {
+public class CoverGeneratorController {
 
-    private Logger log = LoggerFactory.getLogger(WeatherPicGenerator.class);
+    private Logger log = LoggerFactory.getLogger(CoverGeneratorController.class);
 
     @Autowired
     private WeatherClientInstance weatherClientInstance;
 
-    private PicGeneratorProperties picGeneratorProperties;
+    private CoverGeneratorProperties picGeneratorProperties;
 
-    public WeatherPicGenerator(PicGeneratorProperties picGeneratorProperties) {
+    public CoverGeneratorController(CoverGeneratorProperties picGeneratorProperties) {
         this.picGeneratorProperties = picGeneratorProperties;
     }
 
-    public static WeatherPicGenerator getGenerator(PicGeneratorProperties picGeneratorProperties) {
-        return new WeatherPicGenerator(picGeneratorProperties);
+    public static CoverGeneratorController getGenerator(CoverGeneratorProperties picGeneratorProperties) {
+        return new CoverGeneratorController(picGeneratorProperties);
     }
 
-    File generatePic() {
+    public File generatePic() {
 
         picGeneratorProperties.getResult().getFolderPath().toFile().mkdirs();
         WeatherResponse weatherData = weatherClientInstance.getWeatherResponse();

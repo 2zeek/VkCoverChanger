@@ -1,10 +1,10 @@
-package vkCoverChanger.config;
+package vkCoverChanger.vk.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import vkCoverChanger.config.properties.VkClientProperties;
+import vkCoverChanger.vk.config.properties.VkClientProperties;
 import vkCoverChanger.vk.VkClientInstance;
 import vkCoverChanger.vk.VkClientInstanceImpl;
 

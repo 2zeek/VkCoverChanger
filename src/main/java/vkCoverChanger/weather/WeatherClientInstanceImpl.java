@@ -2,7 +2,7 @@ package vkCoverChanger.weather;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
-import vkCoverChanger.config.properties.WeatherClientProperties;
+import vkCoverChanger.weather.config.properties.WeatherClientProperties;
 import vkCoverChanger.weather.response.WeatherResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
