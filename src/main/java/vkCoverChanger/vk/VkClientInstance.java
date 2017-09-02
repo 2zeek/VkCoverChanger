@@ -19,4 +19,5 @@ public interface VkClientInstance {
     SaveOwnerPhotoResponse setAvatar(File file) throws ClientException, ApiException;
     GetMembersResponse getGroupMembers() throws ClientException, ApiException;
     SaveOwnerPhotoResponse setGroupAvatar(File file) throws ClientException, ApiException;
+    void setGroupCover(File file) throws ClientException, ApiException;
 }

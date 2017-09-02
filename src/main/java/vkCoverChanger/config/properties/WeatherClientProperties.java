@@ -6,6 +6,10 @@ import org.springframework.context.annotation.PropertySource;
 
 import java.net.URI;
 
+/**
+ * Created by Nikolay V. Petrov on 02.09.2017.
+ */
+
 @PropertySource(value = "file:${config.directory}/owm-client.properties")
 @ConfigurationProperties(prefix = "weather")
 @Configuration

@@ -3,11 +3,9 @@ package vkCoverChanger;
 import com.vk.api.sdk.exceptions.ApiException;
 import com.vk.api.sdk.exceptions.ClientException;
 import com.vk.api.sdk.objects.wall.responses.GetResponse;
-import vkCoverChanger.config.WeatherClientConfiguration;
 import vkCoverChanger.vk.VkClientInstance;
 import vkCoverChanger.weather.WeatherClientInstance;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Import;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -15,8 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Map;
 
+/**
+ * Created by Nikolay V. Petrov on 02.09.2017.
+ */
+
 @RestController
-@Import(WeatherClientConfiguration.class)
 public class HelloController {
 
     @Autowired
@@ -24,6 +25,10 @@ public class HelloController {
 
     @Autowired
     protected VkClientInstance vkClientInstance;
+
+    @Autowired
+    protected WeatherPicGenerator weatherPicGenerator;
+
 
     @RequestMapping("/")
     @ResponseBody
@@ -47,6 +52,13 @@ public class HelloController {
     @ResponseBody
     GetResponse aass() throws ClientException, ApiException {
         return vkClientInstance.getWall();
+    }
+
+    @RequestMapping("/tryIt")
+    @ResponseBody
+    String tryIt() throws ClientException, ApiException {
+        vkClientInstance.setGroupCover(weatherPicGenerator.generatePic());
+        return "success";
     }
 
 }

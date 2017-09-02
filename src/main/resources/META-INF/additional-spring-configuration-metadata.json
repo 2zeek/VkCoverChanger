@@ -4,5 +4,10 @@
       "name": "config.directory",
       "type": "java.lang.String",
       "description": "Directory with configs, obviously."
-  }
-] }
+    },
+    {
+      "name": "upload.directory",
+      "type": "java.lang.String",
+      "description": "Description for upload.deirctory."
+    }
+  ] }

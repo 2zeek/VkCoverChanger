@@ -8,6 +8,10 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import vkCoverChanger.weather.WeatherClientInstanceImpl;
 
+/**
+ * Created by Nikolay V. Petrov on 02.09.2017.
+ */
+
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
 @Import({

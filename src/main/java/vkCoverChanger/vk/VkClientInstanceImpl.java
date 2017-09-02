@@ -29,11 +29,9 @@ public class VkClientInstanceImpl implements VkClientInstance {
 
     private VkClientInstanceImpl(VkClientProperties vkClientProperties) {
         this.vkClientProperties = vkClientProperties;
-        this.vkClientProperties.getUser().setActor(
-                new UserActor(vkClientProperties.getUser().getId(),
+        this.vkClientProperties.getUser().setActor(new UserActor(vkClientProperties.getUser().getId(),
                         vkClientProperties.getUser().getAccessToken()));
-        this.vkClientProperties.getGroup().setActor(
-                new GroupActor(vkClientProperties.getGroup().getId(),
+        this.vkClientProperties.getGroup().setActor(new GroupActor(vkClientProperties.getGroup().getId(),
                         vkClientProperties.getGroup().getAccessToken()));
         TransportClient transportClient = HttpTransportClient.getInstance();
         this.vkApiClient = new VkApiClient(transportClient);
