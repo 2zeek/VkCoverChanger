@@ -5,8 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import vkCoverChanger.config.properties.VkClientProperties;
-import vkCoverChanger.vk.VkClient;
 import vkCoverChanger.vk.VkClientInstance;
+import vkCoverChanger.vk.VkClientInstanceImpl;
 
 /**
  * Created by Nikolay V. Petrov on 02.09.2017.
@@ -24,7 +24,7 @@ public class VkClientConfiguration {
 
     @Bean
     VkClientInstance vkClientInstance() {
-        return VkClient.createNewClient(vkClientProperties);
+        return VkClientInstanceImpl.createNewClient(vkClientProperties);
     }
 
 }

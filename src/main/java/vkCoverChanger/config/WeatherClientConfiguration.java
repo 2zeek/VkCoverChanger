@@ -1,12 +1,12 @@
 package vkCoverChanger.config;
 
-import vkCoverChanger.weather.WeatherClient;
 import vkCoverChanger.weather.WeatherClientInstance;
 import vkCoverChanger.config.properties.WeatherClientProperties;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
+import vkCoverChanger.weather.WeatherClientInstanceImpl;
 
 @SuppressWarnings("SpringJavaAutowiringInspection")
 @Configuration
@@ -20,7 +20,7 @@ public class WeatherClientConfiguration {
 
     @Bean
     WeatherClientInstance weatherClientInstanceImpl() {
-        return WeatherClient.createNewClient(weatherClientProperties);
+        return WeatherClientInstanceImpl.createNewClient(weatherClientProperties);
     }
 
 }

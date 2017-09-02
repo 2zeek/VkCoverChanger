@@ -17,11 +17,16 @@ public class WeatherClientInstanceImpl implements WeatherClientInstance {
     private ObjectMapper objectMapper;
 
 
-    WeatherClientInstanceImpl(WeatherClientProperties weatherClientProperties) {
+    private WeatherClientInstanceImpl(WeatherClientProperties weatherClientProperties) {
         this.weatherClientProperties = weatherClientProperties;
         this.restTemplate = new RestTemplate();
         this.objectMapper = new ObjectMapper();
     }
+
+    public static WeatherClientInstance createNewClient(WeatherClientProperties weatherClientProperties) {
+        return new WeatherClientInstanceImpl(weatherClientProperties);
+    }
+
 
     public WeatherResponse getWeatherResponse() {
         WeatherResponse weatherResponse = restTemplate.getForObject(weatherClientProperties.getUrl() +

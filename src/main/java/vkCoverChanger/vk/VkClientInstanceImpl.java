@@ -32,13 +32,17 @@ public class VkClientInstanceImpl implements VkClientInstance {
     private Integer groupId;
     private GroupActor groupActor;
 
-    VkClientInstanceImpl(VkClientProperties vkClientProperties) {
+    private VkClientInstanceImpl(VkClientProperties vkClientProperties) {
         TransportClient transportClient = HttpTransportClient.getInstance();
         this.vkApiClient = new VkApiClient(transportClient);
         this.userId = vkClientProperties.getUser().getId();
         this.userActor = new UserActor(userId, vkClientProperties.getUser().getAccessToken());
         this.groupId = vkClientProperties.getGroup().getId();
         this.groupActor = new GroupActor(groupId, vkClientProperties.getGroup().getAccessToken());
+    }
+
+    public static VkClientInstance createNewClient(VkClientProperties vkClientProperties) {
+        return new VkClientInstanceImpl(vkClientProperties);
     }
 
 //    @GetMapping(NAMESPACE + "/getWall")
