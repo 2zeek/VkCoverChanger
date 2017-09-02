@@ -1,7 +1,9 @@
 package vkCoverChanger;
 
 import org.springframework.context.ApplicationContext;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import vkCoverChanger.application.Application;
+import vkCoverChanger.controllers.MainController;
 import vkCoverChanger.vk.config.VkClientConfiguration;
 import vkCoverChanger.weather.config.WeatherClientConfiguration;
 import org.slf4j.Logger;
@@ -18,11 +20,13 @@ import org.springframework.context.annotation.Import;
         WeatherClientConfiguration.class,
         VkClientConfiguration.class,
 })
+@EnableScheduling
 public class VkCoverChanger {
 
     static Logger log = LoggerFactory.getLogger(VkCoverChanger.class);
 
     public static void main(String... args) {
         ApplicationContext context = Application.start(VkCoverChanger.class, args);
+
     }
 }
