@@ -4,6 +4,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
+import java.awt.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
@@ -12,13 +13,16 @@ import java.nio.file.Paths;
  */
 
 @PropertySource(value = "file:${config.directory}/pic-generator.properties")
-@ConfigurationProperties(prefix = "pic-generator")
+    @ConfigurationProperties(prefix = "pic-generator")
 @Configuration
 public class CoverGeneratorProperties {
 
     private String iconsFolder;
     private Result result;
     private Background background;
+    private String weatherIconRequired;
+    private DegreesPosition degreesPosition;
+    private TextFont textFont;
 
     public String getIconsFolder() {
         return iconsFolder;
@@ -46,6 +50,34 @@ public class CoverGeneratorProperties {
 
     public void setBackground(Background background) {
         this.background = background;
+    }
+
+    public String getWeatherIconRequired() {
+        return weatherIconRequired;
+    }
+
+    public void setWeatherIconRequired(String  weatherIconRequired) {
+        this.weatherIconRequired = weatherIconRequired;
+    }
+
+    public Boolean isWeatherIconRequired() {
+        return Boolean.valueOf(weatherIconRequired);
+    }
+
+    public DegreesPosition getDegreesPosition() {
+        return degreesPosition;
+    }
+
+    public void setDegreesPosition(DegreesPosition degreesPosition) {
+        this.degreesPosition = degreesPosition;
+    }
+
+    public TextFont getTextFont() {
+        return textFont;
+    }
+
+    public void setTextFont(TextFont textFont) {
+        this.textFont = textFont;
     }
 
     public static class Result {
@@ -109,4 +141,57 @@ public class CoverGeneratorProperties {
         }
 
     }
+
+    public static class DegreesPosition {
+        Integer x;
+        Integer y;
+
+        public Integer getX() {
+            return x;
+        }
+
+        public void setX(Integer x) {
+            this.x = x;
+        }
+
+        public Integer getY() {
+            return y;
+        }
+
+        public void setY(Integer y) {
+            this.y = y;
+        }
+    }
+
+    public static class TextFont {
+        String name;
+        Integer style;
+        Integer size;
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public Integer getStyle() {
+            return style;
+        }
+
+        public void setStyle(Integer style) {
+            this.style = style;
+        }
+
+        public Integer getSize() {
+            return size;
+        }
+
+        public void setSize(Integer size) {
+            this.size = size;
+        }
+
+    }
+
 }

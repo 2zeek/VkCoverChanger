@@ -47,38 +47,48 @@ public class CoverGeneratorController {
         calendar.setTime(new Date());
         Integer currentHour = calendar.get(Calendar.HOUR_OF_DAY);
 
-        String weather = weatherClientInstance.getWeatherResponse().getWeather().get(0).getMain().toLowerCase();
         String dayTime = currentHour > 6 && currentHour < 20 ? "day" : "night";
-        String weatherPicName = weather + "_" + dayTime;
 
-        String tempText =weatherData.getMain().getTemp() > 0
+        String tempText = weatherData.getMain().getTemp() > 0
                 ? "+" + weatherData.getMain().getTemp().toString().split("\\.")[0] + "°"
                 : "1" + weatherData.getMain().getTemp().toString().split("\\.")[0] + "°";
 
-        log.info("Current weather: " + tempText + ", " + weather);
+        log.info("Current weather: " + tempText + ", " + weatherData.getWeather().get(0).getMain() + ", " +
+                weatherData.getWeather().get(0).getDescription());
 
-        BufferedImage text = convertTextToGraphic(tempText, new Font("Arial", Font.PLAIN, 25));
-        BufferedImage icon = null;
-        try {
-            icon = Scalr.resize(ImageIO.read(
-                    new File(picGeneratorProperties.getIconsFolder() + "/" + weatherPicName + ".png")),
-                    50);
-        } catch (IOException e) {
+        BufferedImage text = convertTextToGraphic(tempText,
+                new Font(picGeneratorProperties.getTextFont().getName(),
+                        picGeneratorProperties.getTextFont().getStyle(),
+                        picGeneratorProperties.getTextFont().getSize()));
+        BufferedImage combined;
+
+        if (picGeneratorProperties.isWeatherIconRequired()) {
+            BufferedImage icon = null;
             try {
                 icon = Scalr.resize(ImageIO.read(
-                        new File(picGeneratorProperties.getIconsFolder() + "/celsius.png")),
+                        new File(picGeneratorProperties.getIconsFolder() + "/" + dayTime + "/" +
+                                weatherData.getWeather().get(0).getMain() + "/" +
+                                weatherData.getWeather().get(0).getDescription().replace(" ", "_") + ".png")),
                         50);
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            } catch (IOException e) {
+                try {
+                    icon = Scalr.resize(ImageIO.read(
+                            new File(picGeneratorProperties.getIconsFolder() + "/celsius.png")),
+                            50);
+                } catch (IOException e1) {
+                    e1.printStackTrace();
+                }
             }
-        }
-        int w = text.getWidth() + icon.getWidth() + 10;
-        int h = Math.max(text.getHeight(), icon.getHeight()) + 10;
-        BufferedImage combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+            int w = text.getWidth() + icon.getWidth() + 10;
+            int h = Math.max(text.getHeight(), icon.getHeight()) + 10;
+            combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
-        Graphics g = combined.getGraphics();
-        g.drawImage(text, 0, 10, null);
-        g.drawImage(icon, text.getWidth(), 0, null);
+            Graphics g = combined.getGraphics();
+            g.drawImage(text, 0, 10, null);
+            g.drawImage(icon, text.getWidth(), 0, null);
+        } else {
+            combined = text;
+        }
 
         BufferedImage background = null;
         try {
@@ -96,7 +106,8 @@ public class CoverGeneratorController {
         Graphics gg = combinedWithBack.getGraphics();
         gg.drawImage(background, 0, 0, null);
 //        gg.drawImage(combined, background.getWidth() - combined.getWidth() - 15, 0, null);
-        gg.drawImage(combined, 215, 0, null);
+        gg.drawImage(combined, picGeneratorProperties.getDegreesPosition().getX(), picGeneratorProperties.getDegreesPosition().getY(),
+                null);
 
         File resultFile = new File(picGeneratorProperties.getResult().getFolderName()
                 + "/" + picGeneratorProperties.getResult().getFileName());
