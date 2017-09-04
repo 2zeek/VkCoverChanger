@@ -23,6 +23,7 @@ public class CoverGeneratorProperties {
     private String weatherIconRequired;
     private DegreesPosition degreesPosition;
     private TextFont textFont;
+    private Icon icon;
 
     public String getIconsFolder() {
         return iconsFolder;
@@ -78,6 +79,14 @@ public class CoverGeneratorProperties {
 
     public void setTextFont(TextFont textFont) {
         this.textFont = textFont;
+    }
+
+    public Icon getIcon() {
+        return icon;
+    }
+
+    public void setIcon(Icon icon) {
+        this.icon = icon;
     }
 
     public static class Result {
@@ -192,6 +201,27 @@ public class CoverGeneratorProperties {
             this.size = size;
         }
 
+    }
+
+    public static class Icon {
+        Integer width;
+        Integer height;
+
+        public Integer getWidth() {
+            return width;
+        }
+
+        public void setWidth(Integer width) {
+            this.width = width;
+        }
+
+        public Integer getHeight() {
+            return height;
+        }
+
+        public void setHeight(Integer height) {
+            this.height = height;
+        }
     }
 
 }

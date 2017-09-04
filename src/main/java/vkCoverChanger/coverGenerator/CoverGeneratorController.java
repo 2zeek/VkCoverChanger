@@ -69,23 +69,25 @@ public class CoverGeneratorController {
                         new File(picGeneratorProperties.getIconsFolder() + "/" + dayTime + "/" +
                                 weatherData.getWeather().get(0).getMain() + "/" +
                                 weatherData.getWeather().get(0).getDescription().replace(" ", "_") + ".png")),
-                        50);
+                        Scalr.Mode.FIT_EXACT,
+                        picGeneratorProperties.getIcon().getWidth(), picGeneratorProperties.getIcon().getHeight());
             } catch (IOException e) {
                 try {
                     icon = Scalr.resize(ImageIO.read(
                             new File(picGeneratorProperties.getIconsFolder() + "/celsius.png")),
-                            50);
+                            Scalr.Mode.FIT_EXACT,
+                            picGeneratorProperties.getIcon().getWidth(), picGeneratorProperties.getIcon().getHeight());
                 } catch (IOException e1) {
                     e1.printStackTrace();
                 }
             }
-            int w = text.getWidth() + icon.getWidth() + 10;
-            int h = Math.max(text.getHeight(), icon.getHeight()) + 10;
+            int w = text.getWidth() + icon.getWidth();
+            int h = Math.max(text.getHeight(), icon.getHeight());
             combined = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
             Graphics g = combined.getGraphics();
-            g.drawImage(text, 0, 10, null);
-            g.drawImage(icon, text.getWidth(), 0, null);
+            g.drawImage(text, 0, (h - text.getHeight()) / 2, null);
+            g.drawImage(icon, text.getWidth(), (h - icon.getHeight()) / 2, null);
         } else {
             combined = text;
         }
@@ -113,7 +115,7 @@ public class CoverGeneratorController {
                 + "/" + picGeneratorProperties.getResult().getFileName());
 
         try {
-            ImageIO.write(combinedWithBack, "PNG",resultFile);
+            ImageIO.write(combinedWithBack, "PNG", resultFile);
         } catch (IOException e) {
             e.printStackTrace();
         }
