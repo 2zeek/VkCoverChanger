@@ -21,21 +21,21 @@ import java.util.GregorianCalendar;
  * Created by Nikolay V. Petrov on 30.08.2017.
  */
 
-public class CoverGeneratorController {
+public class CoverGeneratorImpl implements CoverGeneratorInstance {
 
-    private Logger log = LoggerFactory.getLogger(CoverGeneratorController.class);
+    private Logger log = LoggerFactory.getLogger(CoverGeneratorImpl.class);
 
     @Autowired
     private WeatherClientInstance weatherClientInstance;
 
     private CoverGeneratorProperties picGeneratorProperties;
 
-    public CoverGeneratorController(CoverGeneratorProperties picGeneratorProperties) {
+    private CoverGeneratorImpl(CoverGeneratorProperties picGeneratorProperties) {
         this.picGeneratorProperties = picGeneratorProperties;
     }
 
-    public static CoverGeneratorController getGenerator(CoverGeneratorProperties picGeneratorProperties) {
-        return new CoverGeneratorController(picGeneratorProperties);
+    public static CoverGeneratorImpl getGenerator(CoverGeneratorProperties picGeneratorProperties) {
+        return new CoverGeneratorImpl(picGeneratorProperties);
     }
 
     public File generatePic() {

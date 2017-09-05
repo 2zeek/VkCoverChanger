@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.annotation.Scheduled;
 import vkCoverChanger.application.Application;
-import vkCoverChanger.coverGenerator.CoverGeneratorController;
+import vkCoverChanger.coverGenerator.CoverGeneratorInstance;
 import vkCoverChanger.vk.VkClientInstance;
 import vkCoverChanger.vk.config.VkClientConfiguration;
 import vkCoverChanger.weather.config.WeatherClientConfiguration;
@@ -39,10 +39,10 @@ public class VkCoverChanger {
     protected VkClientInstance vkClientInstance;
 
     @Autowired
-    protected CoverGeneratorController coverGeneratorController;
+    protected CoverGeneratorInstance coverGeneratorInstance;
 
     @Scheduled(fixedDelay = 1800000) // 30 minutes delay
     public void generateAndPost() throws ClientException, ApiException {
-        vkClientInstance.setGroupCover(coverGeneratorController.generatePic());
+        vkClientInstance.setGroupCover(coverGeneratorInstance.generatePic());
     }
 }
